@@ -1,0 +1,144 @@
+<html>
+<title >Job Portal</title>
+<link rel="icon" type="png" href="Title.png"/>
+<style>
+div#first{
+background:url("Avatar.jpg");
+background-repeat: no-repeat;
+opacity:0.2;
+width:25%;
+height:480px;
+margin: auto;	
+padding: 9px;	
+top:10%;
+position:relative;
+}
+div#second{
+width:55%;
+height:480px;
+position:absolute;
+top: 15%;
+left:20%;
+}
+a
+	{
+		text-decoration: none;
+		font-family: Arial;
+		color:red;
+	}
+.button 
+{
+    background-color: #4CAF50; /* Green */
+    border: 2px solid black;
+    color: blue;
+    padding: 8px 150px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	opacity: 0.3;
+}	
+</style>
+<body>
+<header>
+	<table style="border-style: none;">
+		<tr>
+			<td><img src="Logo.jpg" alt="logo" height="7%" width="13%"></td>			
+			<td width="5%"><a href="341.html"><b>Home</b></a></td>			
+			<td width="8%"><a href="342.html"><b>Job Search</b></a></td>			
+			<td width="8%"><a href="348.html"><b>Post a job</b></a></td>			
+			<td width="10%"><a href="345.html"><b>Post a resume</b></a></td>
+		</tr>	
+	</table>
+</header>	
+<hr color="black" size="2">
+<div  id="first">
+</div>
+<div  id="second">
+		<table style="margin-top:50px; margin-left:230px;position:relative;" cellspacing="30">		
+		<tr>
+			<th colspan="2"><h2><i>Search and get your dream job here!!!</i></h2></th>
+		</tr>	
+		<tr>
+			<td><b>Company:</b></td>
+			<td><input type="text" id="Name" onchange="alphaNumValidation(this.id);" ><span id="NameMark" style="visibility:hidden"></span></td>						
+		</tr>
+		<tr>
+			<td><b>Job title:</b></td>
+			<td><input type="text" id="JobTitle" onchange="alphaValidation(this.id);"><span id="JobTitleMark" style="visibility:hidden"></span></td>			
+		</tr>
+		<tr>
+			<td><b>Location:</b></td>
+			<td><input type="text" id="Location" onchange="alphaValidation(this.id);"><span id="LocationMark" style="visibility:hidden"></span></td>			
+		</tr>		
+		<tr>
+			<td colspan="2" align="center">			
+			<a href="javascript: void(0)" class="button" id="btn"><b>POST</b></a>
+			</td>
+		</tr>
+	</table>			
+</div>
+<footer>
+<table align="center" style="color:red;margin-top:45px;">
+	<tr>
+		<td><b>&copy; Copyright 2018 - All Rights Reserved</b></td>
+		<td width="55%"></td>
+		<td>SPICOT IT PARK-TCS-CHN-603103</td>
+</footer>
+<script>
+function postValidation()
+{
+	var Name=document.getElementById("NameMark").style.color;
+	var JobTitle=document.getElementById("JobTitleMark").style.color;
+	var Location=document.getElementById("LocationMark").style.color;	
+	if(Name=="green" && JobTitle=="green" && Location=="green")
+	{
+	 document.getElementById("btn").style.opacity=1;
+	 document.getElementById("btn").href="349.html";
+	}	
+}
+function alphaValidation(val) {
+    var inputtext = document.getElementById(val).value;    	
+	var mark=val+"Mark";
+	 var letters = /^[A-Za-z ]+$/;
+   if(inputtext.match(letters))
+     {		
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="green";		
+		document.getElementById(mark).innerHTML="&#10004;";	
+		postValidation();		
+      return true;
+     }
+   else
+     {     
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="red";
+		document.getElementById(mark).innerHTML="&#x2718;";		
+		document.getElementById(val).title="only alphabets and space are allowed.";
+     return false;
+     }
+}
+function alphaNumValidation(val) {
+    var inputtext = document.getElementById(val).value; 
+	var mark=val+"Mark";   	
+	 var letters = /^[A-Za-z0-9 ]+$/;
+   if(inputtext.match(letters))
+     {	
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="green";		
+		document.getElementById(mark).innerHTML="&#10004;";
+		postValidation();	
+      return true;
+     }
+   else
+     {
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="red";
+		document.getElementById(mark).innerHTML="&#x2718;";		
+		document.getElementById(val).title="only alphaNumerics and space are allowed.";
+     return false;
+     }
+}
+</script>
+</body>
+</html>    

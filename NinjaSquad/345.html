@@ -1,0 +1,236 @@
+<html>
+<title >Job Portal</title>
+<link rel="icon" type="png" href="Title.png"/>
+<style>
+div#first{
+background:url("Avatar.jpg");
+background-repeat: no-repeat;
+opacity:0.2;
+width:25%;
+height:480px;
+margin: auto;	
+padding: 9px;	
+top:10%;
+position:relative;
+}
+div#second{
+width:70%;
+height:480px;
+position:absolute;
+top: 15%;
+left:20%;
+}
+a
+{
+	text-decoration: none;
+	font-family: Arial;
+	color:red;
+}
+#FileUpload 
+{
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 6px 12px;  
+}
+.button 
+{
+    background-color: #4CAF50; /* Green */
+    border: 2px solid black;
+    color: blue;
+    padding: 8px 118px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	opacity: 0.3;
+}	
+</style>
+<body>
+<header>
+	<table style="border-style: none;">
+		<tr>
+			<td><img src="Logo.jpg" alt="logo" height="7%" width="13%"></td>			
+			<td width="5%"><a href="341.html"><b>Home</b></a></td>			
+			<td width="8%"><a href="342.html"><b>Job Search</b></a></td>			
+			<td width="8%"><a href="348.html"><b>Post a job</b></a></td>			
+			<td width="10%"><a href="345.html"><b>Post a resume</b></a></td>
+		</tr>	
+	</table>
+</header>	
+<hr color="black" size="2">
+<div  id="first">
+</div>
+<div  id="second">
+	<table style="margin-top:50px; margin-left:120px;position:relative;"  cellspacing="30">
+		<tr>
+			<th colspan="4"><h2><i>Post your profile and get your dream job here!!!</i></h2></th>
+		</tr>
+		<tr>
+			<td><b>NAME:</b></td><td><input type="text" id="Name" onchange="alphaValidation(this.id);"><span id="NameMark" style="visibility:hidden"></span></td>			
+			<td><b>Experience: </b></td><td><input type="text" id="Experience" onchange="expValidation(this.id);"><span id="ExperienceMark" style="visibility:hidden"></span></td>
+		</tr>
+		<tr>
+			<td><b>Job title:</b></td><td><input type="text" id="JobTitle" onchange="alphaValidation(this.id);"><span id="JobTitleMark" style="visibility:hidden"></span></td>
+			<td><b>Mobile: </b></td><td><input type="text" id="MobileNumber" onchange="mobileValidation(this.id);"><span id="MobileNumberMark" style="visibility:hidden"></span></td>
+		</tr>
+		<tr>
+			<td><b>Email:</b></td><td><input type="text" id="Email" onchange="emailValidation(this.id);"><span id="EmailMark" style="visibility:hidden"></span></td>
+			<td><b>City: </b></td><td><input type="text" id="City" onchange="alphaValidation(this.id);"><span id="CityMark" style="visibility:hidden"></span></td>
+		</tr>
+		<tr>
+			<td colspan="4" align="center">			
+			<input type="file" id="FileUpload" onchange="fileValidation(this.id);">
+			<span id="FileUploadMark" style="visibility:hidden"></span></td>	
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="center">			
+			<a href="javascript: void(0)" class="button" id="btn"><b>POST</b></a>
+			</td>
+		</tr>
+	</table>
+</div>
+<footer>
+<table align="center" style="color:red;margin-top:45px;">
+	<tr>
+		<td><b>&copy; Copyright 2018 - All Rights Reserved</b></td>
+		<td width="55%"></td>
+		<td>SIPCOT IT PARK-TCS-CHN-603103</td>
+</footer>
+<script>
+function postValidation()
+{
+	var Name=document.getElementById("NameMark").style.color;
+	var Experience=document.getElementById("ExperienceMark").style.color;	
+	var JobTitle=document.getElementById("JobTitleMark").style.color;
+	var MobileNumber=document.getElementById("MobileNumberMark").style.color;
+	var Email=document.getElementById("EmailMark").style.color;	
+	var City=document.getElementById("CityMark").style.color;
+	var FileUpload=document.getElementById("FileUploadMark").style.color;	
+	
+	if(Name=="green" && Experience=="green" && JobTitle=="green" && MobileNumber=="green" && Email=="green" && City=="green" && FileUpload=="green")
+	{
+	 document.getElementById("btn").style.opacity=1;
+	 document.getElementById("btn").href="349.html";
+	}	
+}
+function alphaValidation(val) {
+    var inputtext = document.getElementById(val).value;  
+	var mark=val+"Mark";   	  	
+	var letters = /^[A-Za-z ]+$/;
+   if(inputtext.match(letters))
+     {	
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="green";		
+		document.getElementById(mark).innerHTML="&#10004;";	
+		postValidation();	
+      return true;
+     }
+   else
+     {     
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="red";
+		document.getElementById(mark).innerHTML="&#x2718;";		
+		document.getElementById(val).title="only alphabets and space are allowed.";		
+     return false;
+     }
+}
+function mobileValidation(val) {
+    var inputtext = document.getElementById(val).value;	
+	var mark=val+"Mark";   	
+	var letters = /^\d{11}$/;
+   if(inputtext.match(letters))
+     {
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="green";		
+		document.getElementById(mark).innerHTML="&#10004;";	
+		postValidation();	
+		return true;
+     }
+   else
+     {     
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="red";
+		document.getElementById(mark).innerHTML="&#x2718;";		
+		document.getElementById(val).title="only numbers with length of 11 digits are allowed";
+		return false;
+     }
+}
+function expValidation(val) {
+    var inputtext = document.getElementById(val).value;		 
+	var mark=val+"Mark";   	
+	var len=inputtext.toString().length;
+	if(len<=2)
+     {
+	 if(inputtext <=38)
+		{
+			document.getElementById(mark).style.visibility="visible";
+			document.getElementById(mark).style.color="green";		
+			document.getElementById(mark).innerHTML="&#10004;";	
+			postValidation();	
+			return true;
+		}
+		else
+		{			
+			document.getElementById(mark).style.visibility="visible";
+			document.getElementById(mark).style.color="red";
+			document.getElementById(mark).innerHTML="&#x2718;";		
+			document.getElementById(val).title="Experience more than 38 are not allowed";
+			return false;
+		}	
+     }
+	 else
+	 {     
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="red";
+		document.getElementById(mark).innerHTML="&#x2718;";		
+		document.getElementById(val).title="Only Numbers with maximum of 2 digits are allowed";
+     return false;
+     }
+}
+function emailValidation(val) {
+    var inputtext = document.getElementById(val).value;
+	var mark=val+"Mark";   	
+	<!--var re=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/;-->
+	var re=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.+(com|net|co|in)$/;
+	if(re.test(inputtext))
+	{
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="green";		
+		document.getElementById(mark).innerHTML="&#10004;";	
+		postValidation();	
+		return true;
+	}
+	else
+	{	
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="red";
+		document.getElementById(mark).innerHTML="&#x2718;";		
+		document.getElementById(val).title="Enter valid Email id";
+	return false;
+	}
+}	
+function fileValidation(val) {
+    var fileName = document.getElementById(val).value;			
+	var mark=val+"Mark";   	
+	var ext = fileName.substring(fileName.lastIndexOf('.') + 1);
+	if(ext == "pdf")
+	{
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="green";		
+		document.getElementById(mark).innerHTML="&#10004;";	
+		postValidation();	
+		return true;
+	} 
+	else
+	{	
+		document.getElementById(mark).style.visibility="visible";
+		document.getElementById(mark).style.color="red";
+		document.getElementById(mark).innerHTML="&#x2718;";		
+		document.getElementById(val).title="Only PDF files are allowed to upload";
+	return false;
+	}
+}
+</script>
+</body>
+</html>    
